@@ -3,6 +3,7 @@ var fs = require('fs'),
     express = require('express'),
     hbs = require('hbs'),
     dirty = require('dirty'),
+    date = require('./lib/date'),
     port = process.env.PORT || 8001;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +31,8 @@ var repl = require('repl').start();
 ////////////////////////////////////////////////////////////////////////////////
 
 server.get('/', function(req, res) {
-  res.render('index.html');
+  var week = date.currentWeek();
+  res.render('index.html', {'calendar': week});
 });
 
 server.get('/week/:week_id', function(req, res) {
