@@ -31,7 +31,7 @@ var repl = require('repl').start();
 ////////////////////////////////////////////////////////////////////////////////
 
 server.get('/', function(req, res) {
-  var week = date.currentWeek();
+  var week = date.currentWeekFromMonday();
   res.render('index.html', {'calendar': week});
 });
 
